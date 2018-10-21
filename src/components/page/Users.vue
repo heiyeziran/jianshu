@@ -102,6 +102,7 @@
 <style scoped>
   .work{
     font-size: 13px;
+    color:black;
   }
   .bt{
     width: 1080px;
