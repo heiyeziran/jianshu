@@ -19,7 +19,6 @@
                   <hr>
                   <span>{{topic.topicArticle}}篇文章</span>
                   <span> · {{topic.topicFans}}k人关注</span>
-                  <br>
                 </b-card>
               </div>
             </div>
