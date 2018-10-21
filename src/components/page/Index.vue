@@ -15,7 +15,7 @@
 <script>
   import vCarousel from '../module/Carousel';
   import vTopic from '../module/Topic';
-  import vArticle from '../module/Article';
+  import vArticle from '../module/Articles';
   import vType from '../module/Type';
   import vAuthor from '../module/Author';
 

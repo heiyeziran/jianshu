@@ -4,7 +4,7 @@
       <b-col cols="8">
         <div class="main-top">
           <div class="avatar-collection">
-            <img :src="topic.topicUrl">
+            <img :src="topic.topicUrl" class="pic">
           </div>
           <a class="btn btn-success follow">
             <span>+关注</span>
@@ -21,7 +21,21 @@
             </p>
           </div>
         </div><hr/>
-        <v-article></v-article>
+        <!--专题文章-->
+        <div class="row" v-for="article in topic.articleList" :key="article.id">
+          <div class="col-md-8">
+            <router-link :to=" '/p/'+article.id ">
+              <p v-text="article.title" class="title"></p>
+              <p v-text="article.summary" class="content"></p>
+            </router-link>
+            <span v-text="article.nickname" class="nickname"></span>
+            <span class="nickname">评论:{{article.comments}}</span>
+            <span class="nickname">喜欢:{{article.likes}}</span>
+          </div>
+          <div class="col-md-4">
+            <img v-bind:src="article.thumbnail" class="picture"/>
+          </div>
+        </div>
       </b-col>
       <b-col cols="4">
         <p class="greyFont">专题公告</p>
@@ -48,12 +62,7 @@
 </template>
 
 <script>
-  import vArticle from '../module/Article';
-
   export default {
-    components: {
-      vArticle
-    },
     data() {
       return {
         id: this.$route.params.id,
@@ -64,12 +73,11 @@
     },
     activated() {
       this.id = this.$route.params.id;
-      console.log(this.id);
       if (this.id == 1) {
         var t = {
           "id": 1,
-          "topicName": "读书",
-          "topicUrl": "https://upload.jianshu.io/collections/images/83/1.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64",
+          "topicName": "简书电影",
+          "topicUrl": "//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240",
           "summary": "读书读书读书读书读书读书读书读书",
           "articleCount": 49535,
           "fans": 1601,
@@ -80,14 +88,94 @@
           "articleList":[
             {
               "id":1,
-              "title":"测试文章",
-              "summary":"测试文章测试文章测试文章测试文章测试文章...",
-              "thumbnail":"1.png",
+              "title":"《了不起的盖茨比》：了不起的爱",
+              "summary":"我们继续奋力向前，逆水行舟，被不断地向后推，直至回到往昔岁月。 所有的光新靓丽都敌不过时间，并且一去不复返。 他们在最美的年华相遇相爱，带着梦幻...",
+              "thumbnail":"//upload-images.jianshu.io/upload_images/13308516-ae2abb978f54cf38.png?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240",
               "authorId":2,
-              "nickname":"作者",
-              "comments":1234,
-              "likes":12
-            }
+              "nickname":"茉莉先生",
+              "comments":2,
+              "likes":2
+            },
+            {
+              "id":2,
+              "title":"沦为“性奴”的3096天：不是你死便是我亡！",
+              "summary":"“绑架”一直都是电影里的热门题材 而现实事件改编，更是吸引人 今天小编便推荐一部由真事改编的”地牢囚禁案” ——《3096天》 故事发生在奥地利...",
+              "thumbnail":"//upload-images.jianshu.io/upload_images/2424569-2dc37af38acd62a9?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240",
+              "authorId":3,
+              "nickname":"电影有得聊",
+              "comments":4,
+              "likes":58
+            },
+            {
+              "id":3,
+              "title":"一段被外国人拍摄的中国历史，恐怕以后都不可能被超越了",
+              "summary":"大家好，我是兔子 一个爱电影的文科男 1986年，意大利人贝纳尔多·贝托鲁奇带着一支“多国部队”，浩浩荡荡的开进了故宫。 他们是第一批授权进入故...",
+              "thumbnail":"//upload-images.jianshu.io/upload_images/8965596-14fd7f817454f7ba?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240",
+              "authorId":4,
+              "nickname":"雪兔电影分享",
+              "comments":7,
+              "likes":28
+            },
+            {
+              "id":4,
+              "title":"上影节：姜文这回彻底火了一把",
+              "summary":"第21届上海国际电影节，自6月16日开幕以来，一时群星璀璨、现场好不热闹。 而作为本届电影节评委会主席的姜文，最受瞩目。 其新作《邪不压正》，及..",
+              "thumbnail":"//upload-images.jianshu.io/upload_images/2954739-db587840e1f657bb?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240",
+              "authorId":5,
+              "nickname":"电影夫人",
+              "comments":1,
+              "likes":7
+            },
+            {
+              "id":5,
+              "title":"豆瓣评分第一的电影《肖申克的救赎》你真的看懂了吗",
+              "summary":"这部影片1994年在美国上映，讲述了20世纪40年代在美国发生的故事，故事的主人公安迪，因为被律师控告谋杀自己的妻子和妻子的情人，被法官判处无期...",
+              "thumbnail":"//upload-images.jianshu.io/upload_images/2460789-ed4959cb843b2daa.png?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240",
+              "authorId":6,
+              "nickname":"陌颜oc",
+              "comments":56,
+              "likes":94
+            },
+            {
+              "id":6,
+              "title":"推荐7部容易被忽视的好电影，看过两部就算你厉害了！",
+              "summary":"一、鳄鱼波鞋走天涯(1995) 9.1分 电影讲述了两个单亲家庭小男孩子在暑假的友情故事，其中一个因输血染上艾滋病，另一个因为缺少关爱而性格孤僻...",
+              "thumbnail":"//upload-images.jianshu.io/upload_images/7040788-ca9a1b3e9c6ab9e5?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240",
+              "authorId":7,
+              "nickname":"七芒电影",
+              "comments":14,
+              "likes":134
+            },
+            {
+              "id":7,
+              "title":"喂！是不是欠了我一个妹妹啊！",
+              "summary":"图|来源于微博，侵立删 文|陌尘 昨天看了《快把我哥带走》终于忍不住还是写了一篇文。已经近乎五个月未写文了，感觉简书都陌生了很多！（下文中对演员....",
+              "thumbnail":"//upload-images.jianshu.io/upload_images/4381936-6683944c713a1a80.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240",
+              "authorId":8,
+              "nickname":"紫陌尘曦",
+              "comments":3,
+              "likes":4
+            },
+            {
+              "id":8,
+              "title":"富察皇后：有40位后妃的乾隆，却用72年独爱了她一人",
+              "summary":"文/麦大人 01 她是乾隆的白月光 要问最近最红的一部电视剧，当然是于正监制的《延禧攻略》，虽然匆匆定档却收获意外之喜。 秦岚饰演的富察皇后，作..",
+              "thumbnail":"//upload-images.jianshu.io/upload_images/2259045-34538bf15bdaa009?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240",
+              "authorId":9,
+              "nickname":"麦大人",
+              "comments":35,
+              "likes":195
+            },
+            {
+              "id":9,
+              "title":"你没看错，这才是周迅的15岁！",
+              "summary":"（本文由小青蛙看电影原创：xqwkdy） 《如懿传》宣传就做了一年多， 上映后关于周迅45岁演15岁的小姑娘槽点满满。 不少人感叹：就不能找一个...",
+              "thumbnail":"//upload-images.jianshu.io/upload_images/2321684-d7f20fcbce2d13d7?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240",
+              "authorId":10,
+              "nickname":"小青蛙看电影",
+              "comments":12,
+              "likes":29
+            },
           ],
           "fansList":[
             {
@@ -128,6 +216,23 @@
 </script>
 
 <style scoped>
+  .picture{
+    width: 130px;
+    height: 100px;
+  }
+  .title{
+    font-size: 19px;
+    font-weight: bold;
+    color: black;
+  }
+  .content{
+    font-size: 15px;
+    color: grey;
+  }
+  .nickname{
+    font-size: 11px;
+    color: darkgray;
+  }
   .main-top{
     margin-bottom: 35px;
     box-sizing: border-box;
@@ -141,6 +246,11 @@
   .avatar-collection{
     display: block;
     cursor: pointer;
+  }
+  .pic{
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
   }
   .main-top .title{
     padding: 10px 0 0 100px;

@@ -91,7 +91,7 @@
   export default {
     data() {
       return {
-        token:123
+        token:1
       }
     },
     computed: {

@@ -105,7 +105,7 @@
           ]
         }
       },
-        name: "Article"
+        name: "Articles"
     }
 </script>
 

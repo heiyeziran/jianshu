@@ -90,10 +90,21 @@ export default new Router({
           meta:{title:'专题详情'}
         },
         {
+          //文章详情
+          path:'/p/:id',
+          component: resolve =>require(['../components/page/Article.vue'],resolve),
+          meta:{title:'文章详情'}
+        },
+        {
           // 个人中心组件
           path: '/u',
           component: resolve => require(['../components/page/User.vue'], resolve),
           meta: {title: '个人中心'}
+        },
+        {
+          path:'/ou/:id',
+          component: resolve =>require (['../components/page/OtherUser.vue'],resolve),
+          meta:{title:'某个作者'}
         },
         {
           //设置
@@ -146,6 +157,11 @@ export default new Router({
       path:'/login',
       component: resolve =>require(['../components/page/Login.vue'],resolve),
       meta:{title:'登陆'}
+    },
+    {
+      path:'/sign_up',
+      component: resolve =>require(['../components/page/Register.vue'],resolve),
+      meta: {title:'注册'}
     }
   ]
 })

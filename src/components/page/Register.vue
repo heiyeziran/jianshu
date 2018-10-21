@@ -1,29 +1,25 @@
 <template>
   <div class="sign">
-    <div class="logo">
-      <a href="/">
-        <img src="//cdn2.jianshu.io/assets/web/logo-58fd04f6f0de908401aa561cda6a0688.png" alt="Logo">
-      </a>
-    </div>
+    <div class="logo"><a href="/"><img src="//cdn2.jianshu.io/assets/web/logo-58fd04f6f0de908401aa561cda6a0688.png" alt="Logo"></a></div>
     <div class="main">
+
+
       <h4 class="title">
         <div class="normal-title">
-          <a class="active" href="/login">
-            <span class="red">登录</span>
-          </a>
+          <a class="active" href="sign_in">登录</a>
           <b>·</b>
-          <a id="js-sign-up-btn" class="register" href="/sign_up">注册</a>
+          <a id="js-sign-up-btn" class="register" href="sign_up">
+            <span class="red">注册</span>
+          </a>
         </div>
       </h4>
       <div class="js-sign-in-container">
-        <form id="new_session" action="/sessions" accept-charset="UTF-8" method="post">
-          <input name="utf8" type="hidden" value="✓">
-          <input type="hidden" name="authenticity_token" value="5RK+HVp8if7enNxRWV5Pb1FyPQxP/hGZafuWVG7FTC/r25fM/OaBTUOfvjq4KRQ1MmSxgPf437fPiFvCTV7Odw==">
+        <form id="new_session" action="/sessions" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="5RK+HVp8if7enNxRWV5Pb1FyPQxP/hGZafuWVG7FTC/r25fM/OaBTUOfvjq4KRQ1MmSxgPf437fPiFvCTV7Odw==">
 
           <!-- 正常登录登录名输入框 -->
           <div class="demo-input-suffix">
             <el-input
-              placeholder="手机号或邮箱"
+              placeholder="你的昵称"
               prefix-icon="el-icon-yonghu"
               v-model="input21">
             </el-input>
@@ -31,43 +27,46 @@
 
           <div class="demo-input-suffix">
             <el-input
+              placeholder="手机号"
+              prefix-icon="el-icon-shoujihao"
+              v-model="input21">
+            </el-input>
+          </div>
+
+          <div class="demo-input-suffix">
+            <el-input
+              placeholder="手机验证码"
+              prefix-icon="el-icon-yanzhengma"
+              suffix-icon=""
+              v-model="input21">
+            </el-input>
+            <div class="aButton">发送验证码</div>
+          </div>
+
+
+          <div class="demo-input-suffix">
+            <el-input
               type="password"
-              placeholder="密码"
+              placeholder="设置密码"
               prefix-icon="el-icon-mima"
               v-model="input21">
             </el-input>
           </div>
 
-          <div class="remember-btn">
-            <input type="checkbox" value="true" checked="checked" name="session[remember_me]" id="session_remember_me">
-            <span class="word">记住我</span>
-          </div>
-
-          <div class="forget-btn">
-            <b-dropdown id="ddown-buttons" text="登录遇到问题?" variant="link" class="m-2 dropcolor ">
-              <b-dropdown-item-button>用手机号重置密码</b-dropdown-item-button>
-              <b-dropdown-item-button>用邮箱重置密码</b-dropdown-item-button>
-              <b-dropdown-item-button>无法用海外手机号登录</b-dropdown-item-button>
-              <b-dropdown-item-button>无法用 Google 帐号登录</b-dropdown-item-button>
-            </b-dropdown>
-          </div>
-
           <button class="sign-in-button" id="sign-in-form-submit-btn" type="button">
             <span id="sign-in-loading"></span>
-            登录
+            注册
           </button>
+
+          <p class="sign-up-msg">点击 “注册” 即表示您同意并愿意遵守简书<br> <a target="_blank" href="http://www.jianshu.com/p/c44d171298ce">用户协议</a> 和 <a target="_blank" href="http://www.jianshu.com/p/2ov8x3">隐私政策</a> 。</p>
+
         </form>
-        <!-- 更多登录方式 -->
+        <!-- 更多注册方式 -->
         <div class="more-sign">
           <h6>
-            社交帐号登录
+            社交帐号直接注册
           </h6>
           <ul>
-            <li id="weibo-link-wrap" class="">
-              <a class="weibo" id="weibo-link">
-                <img src="/static/img/微博.png"/>
-              </a>
-            </li>
             <li>
               <a id="weixin" class="weixin" target="_blank">
                 <img src="/static/img/微信.png">
@@ -76,24 +75,24 @@
             <li>
               <a id="qq" class="qq" target="_blank">
                 <img src="/static/img/qq.png"/>
-            </a>
-            </li>
-            <li>
-              <a class="douban" target="_blank">
-                <img src="/static/img/豆瓣.png"/>
               </a>
             </li>
           </ul>
+
+        </div>
       </div>
-      </div>
+
     </div>
   </div>
 </template>
 <script>
-    export default {
-      name: "Login"
-    }
+
+
+  export default {
+    name: "Login"
+  }
 </script>
+
 
 <style scoped>
   .sign {
@@ -104,10 +103,6 @@
     background-color: #f1f1f1;
     color: gray;
 
-  }
-
-  .red{
-    color: #ea6f5a;
   }
   .logo {
     position: absolute;
@@ -128,45 +123,37 @@
     vertical-align: middle;
     display: inline-block;
   }
-   .title {
+  .title {
     font-family: -apple-system,SF UI Display,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
     margin: 0 auto 50px;
     padding: 10px;
     font-weight: 400;
     color: #969696;
   }
-  .active {
+  .register {
     font-weight: 700;
     color: #ea6f5a;
     border-bottom: 2px solid #ea6f5a;
     font-size: 20px;
   }
 
-  .register{
+  .red{
+    color: #ea6f5a;
+  }
+
+  .active{
     font-size: 20px;
   }
   form {
     margin-bottom: 30px;
   }
-  .word{
-    color: RGB(150,150,150);
-  }
-  .remember-btn {
-    float: left;
-    margin: 30px 0 ;
-  }
-  .forget-btn {
-    float: right;
-    position: relative;
-    margin: 15px 0;
-    font-size: 14px;
-  }
+
   .more-sign {
     margin-top: 50px;
   }
 
   .sign-in-button {
-    background: #3194d0;
+    background: RGB(66,192,46);
     margin-top: 20px;
     width: 100%;
     padding: 9px 18px;
@@ -236,6 +223,41 @@
     line-height: 50px;
     display: block;
     cursor: pointer;
+  }
+
+  .sign .sign-up-msg {
+    margin: 10px 0;
+    padding: 0;
+    text-align: center;
+    font-size: 12px;
+    line-height: 20px;
+    color: #969696;
+  }
+  .demo-input-suffix{
+    position: relative;
+    border-radius: 4px 4px 0 0;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 0;
+    border: 1px solid #c8c8c8;
+    background-color: hsla(0,0%,71%,.1);
+    vertical-align: middle;
+    font-size: inherit;
+    line-height: inherit;
+    padding: 4px 0 0 0;
+  }
+  .aButton{
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 100px;
+    height: 36px;
+    font-size: 13px;
+    color: #fff;
+    background-color: #42c02e;
+    border-radius: 20px;
+    line-height: 36px;
+
   }
 </style>
 
